@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+  --brand-navy: #1e3a8a;
+  --brand-navy-hover: #1e40af;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--foreground);
+  background: var(--background);
+}
+
+button,
+textarea,
+input,
+select {
+  font: inherit;
+}
+
+textarea::placeholder,
+input::placeholder {
+  color: #9ca3af;
+}
+
+@layer components {
+  .lp-page {
+    background: linear-gradient(160deg, #f0f4ff 0%, #fafbff 50%, #f5f0ff 100%);
+  }
+
+  .lp-orb {
+    @apply pointer-events-none absolute rounded-full;
+  }
+
+  .lp-orb-a {
+    width: 600px;
+    height: 600px;
+    top: -200px;
+    right: -200px;
+    background: radial-gradient(circle, rgba(30, 58, 138, 0.12), transparent 70%);
+  }
+
+  .lp-orb-b {
+    width: 400px;
+    height: 400px;
+    bottom: 20%;
+    left: -100px;
+    background: radial-gradient(circle, rgba(82, 102, 197, 0.1), transparent 70%);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-navy px-8 py-3 text-base font-semibold text-white transition hover:bg-brand-navy-hover;
+  }
+
+  .btn-primary-sm {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-navy px-6 py-2 text-base font-semibold text-white transition hover:bg-brand-navy-hover;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border-2 border-brand-navy bg-white px-8 py-3 text-base font-semibold text-brand-navy transition hover:bg-brand-blue-50;
+  }
+
+  .btn-secondary-gray {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border-2 border-gray-300 bg-white px-8 py-3 text-base font-semibold text-gray-700 transition hover:bg-gray-50;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-amber-400 px-8 py-3 text-base font-semibold text-brand-navy transition hover:bg-amber-500;
+  }
+
+  .btn-disabled {
+    @apply inline-flex cursor-not-allowed items-center justify-center gap-2 rounded-xl bg-gray-200 px-8 py-3 text-base font-semibold text-gray-400;
+  }
+
+  .card-basic {
+    @apply rounded-xl border-2 border-gray-200 bg-white p-6;
+  }
+
+  .card-highlighted {
+    @apply rounded-xl border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-yellow-50 p-6;
+  }
+
+  .card-hover {
+    @apply rounded-xl border-2 border-gray-200 bg-white p-6 transition hover:border-brand-navy hover:shadow-lg;
+  }
+
+  .card-info {
+    @apply rounded-xl border border-brand-blue-200 bg-brand-blue-50 p-6;
+  }
+
+  .sg-code {
+    @apply inline-block rounded-md bg-gray-100 px-2 py-1 font-mono text-sm text-gray-700;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
