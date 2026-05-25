@@ -3,7 +3,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Écrivance - TCF Canada Writing Practice",
-  description: "Mobile-first prototype for TCF Canada Written Expression practice."
+  description: "Mobile-first prototype for TCF Canada Written Expression practice.",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png"
+  }
 };
 
 export default function RootLayout({
@@ -13,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans">{children}</body>
+      <body className="overflow-x-hidden font-sans">{children}</body>
     </html>
   );
 }

@@ -25,8 +25,8 @@ type ColorSwatch = {
 };
 
 const navyColors: ColorSwatch[] = [
-  { hex: "#1e3a8a", token: "#1e3a8a", label: "Primary Navy", className: "bg-brand-navy" },
-  { hex: "#1e40af", token: "#1e40af", label: "Navy Hover", className: "bg-brand-navy-hover" },
+  { hex: "#002395", token: "#002395", label: "Primary Navy", className: "bg-brand-navy" },
+  { hex: "#001a70", token: "#001a70", label: "Navy Hover", className: "bg-brand-navy-hover" },
   { token: "bg-blue-50", label: "Light Blue BG", className: "bg-blue-50" }
 ];
 
@@ -91,6 +91,11 @@ export default function StyleGuidePage() {
         {/* Color Palette */}
         <section className="mb-16">
           <SectionTitle>Color Palette</SectionTitle>
+          <p className="mt-3 max-w-2xl text-base leading-relaxed text-gray-600">
+            The primary navy is inspired by the blue of the French flag, giving
+            Écrivance a confident, French-learning identity while keeping the
+            interface calm and professional.
+          </p>
           <div className="mt-8 grid gap-10 md:grid-cols-3">
             <ColorColumn title="Navy (Primary)" swatches={navyColors} />
             <ColorColumn title="Yellow/Amber (Accent)" swatches={accentColors} />
@@ -181,6 +186,7 @@ export default function StyleGuidePage() {
               <div className="mt-4">
                 <Button variant="accent">Accent Button</Button>
               </div>
+              <CodeLabel>bg-amber-400 · text-gray-900 (black)</CodeLabel>
             </div>
             <div>
               <SubsectionTitle>Disabled</SubsectionTitle>
@@ -214,7 +220,7 @@ export default function StyleGuidePage() {
               <p className="mt-2 text-base text-gray-700">
                 Interactive card with hover effects
               </p>
-              <CodeLabel>hover:border-[#1e3a8a] hover:shadow-lg</CodeLabel>
+              <CodeLabel>hover:border-[#002395] hover:shadow-lg</CodeLabel>
             </article>
             <article className="card-info">
               <SubsectionTitle>Info Card</SubsectionTitle>
@@ -268,7 +274,7 @@ export default function StyleGuidePage() {
                 <span className="rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-800">
                   B1+
                 </span>
-                <span className="rounded-full bg-amber-400 px-4 py-2 text-sm font-semibold text-brand-navy">
+                <span className="rounded-full bg-amber-400 px-4 py-2 text-sm font-semibold text-gray-900">
                   Recommended
                 </span>
               </div>

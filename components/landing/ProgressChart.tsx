@@ -69,7 +69,7 @@ export function ProgressChart({ data = defaultData, height = 140 }: ProgressChar
       <motion.path
         d={linePath}
         fill="none"
-        stroke="#1e3a8a"
+        stroke="#002395"
         strokeWidth={2.5}
         strokeLinecap="round"
         initial={{ pathLength: 0, opacity: 0.6 }}
@@ -86,7 +86,7 @@ export function ProgressChart({ data = defaultData, height = 140 }: ProgressChar
           cx={p.x}
           cy={p.y}
           r={4}
-          fill="#1e3a8a"
+          fill="#002395"
           initial={{ scale: 0, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={scrollViewport}

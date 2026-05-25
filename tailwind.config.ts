@@ -9,14 +9,14 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          navy: "#1e3a8a",
-          "navy-hover": "#1e40af",
+          navy: "#002395",
+          "navy-hover": "#001a70",
           "blue-50": "#eff6ff",
           "blue-200": "#bfdbfe"
         }
       },
       boxShadow: {
-        card: "0 4px 24px rgba(30, 58, 138, 0.08)"
+        card: "0 4px 24px rgba(0, 35, 149, 0.08)"
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],

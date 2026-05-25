@@ -7,8 +7,9 @@
 :root {
   --background: #ffffff;
   --foreground: #111827;
-  --brand-navy: #1e3a8a;
-  --brand-navy-hover: #1e40af;
+  --brand-navy: #002395;
+  --brand-navy-hover: #001a70;
+  --accent-button-text: #111827;
 }
 
 * {
@@ -17,10 +18,12 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
+  overflow-x: hidden;
   color: var(--foreground);
   background: var(--background);
 }
@@ -39,6 +42,8 @@ input::placeholder {
 
 @layer components {
   .lp-page {
+    position: relative;
+    overflow-x: hidden;
     background: linear-gradient(160deg, #f0f4ff 0%, #fafbff 50%, #f5f0ff 100%);
   }
 
@@ -51,7 +56,7 @@ input::placeholder {
     height: 600px;
     top: -200px;
     right: -200px;
-    background: radial-gradient(circle, rgba(30, 58, 138, 0.12), transparent 70%);
+    background: radial-gradient(circle, rgba(0, 35, 149, 0.12), transparent 70%);
   }
 
   .lp-orb-b {
@@ -79,7 +84,12 @@ input::placeholder {
   }
 
   .btn-accent {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-amber-400 px-8 py-3 text-base font-semibold text-brand-navy transition hover:bg-amber-500;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-amber-400 px-8 py-3 text-base font-semibold text-gray-900 transition hover:bg-amber-500;
+    color: var(--accent-button-text);
+  }
+
+  .btn-social {
+    @apply inline-flex items-center justify-center gap-3 rounded-xl border-2 border-gray-200 bg-white px-6 text-base font-semibold text-gray-800 transition hover:border-brand-navy/25 hover:bg-gray-50;
   }
 
   .btn-disabled {
@@ -104,6 +114,16 @@ input::placeholder {
 
   .sg-code {
     @apply inline-block rounded-md bg-gray-100 px-2 py-1 font-mono text-sm text-gray-700;
+  }
+
+  .preparing-ring-tick {
+    animation: preparing-ring-tick 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
+
+@keyframes preparing-ring-tick {
+  to {
+    stroke-dashoffset: 0;
   }
 }
 

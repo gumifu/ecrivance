@@ -1,21 +1,21 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import { easeOut, motionTransition, scrollViewport } from "../../lib/landing-motion";
+import { easeOut, motionTransition } from "../../lib/landing-motion";
 
-type ScoreBarProps = {
+type FeedbackScoreBarProps = {
   label: string;
   value: number;
   color?: string;
   delay?: number;
 };
 
-export function ScoreBar({
+export function FeedbackScoreBar({
   label,
   value,
   color = "#002395",
   delay = 0
-}: ScoreBarProps) {
+}: FeedbackScoreBarProps) {
   const reduced = useReducedMotion();
 
   return (
@@ -26,11 +26,10 @@ export function ScoreBar({
           className="text-sm font-semibold"
           style={{ color }}
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={scrollViewport}
+          animate={{ opacity: 1 }}
           transition={motionTransition(reduced ?? false, {
-            delay: delay + 0.25,
-            duration: 0.4
+            delay: delay + 0.2,
+            duration: 0.35
           })}
         >
           {value}/100
@@ -41,11 +40,10 @@ export function ScoreBar({
           className="h-1.5 rounded-full"
           style={{ backgroundColor: color }}
           initial={{ width: 0 }}
-          whileInView={{ width: `${value}%` }}
-          viewport={scrollViewport}
+          animate={{ width: `${value}%` }}
           transition={motionTransition(reduced ?? false, {
             delay,
-            duration: 0.8,
+            duration: 0.85,
             ease: easeOut
           })}
         />

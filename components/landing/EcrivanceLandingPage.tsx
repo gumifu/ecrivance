@@ -123,12 +123,12 @@ export default function EcrivanceLandingPage() {
           </nav>
           <div className="flex items-center gap-3">
             <Link
-              href="/practice"
+              href="/signin"
               className="hidden text-sm text-gray-500 transition hover:text-gray-900 sm:inline"
             >
               Sign in
             </Link>
-            <Link href="/practice" className="btn-primary-sm">
+            <Link href="/onboarding" className="btn-primary-sm">
               Start free
             </Link>
           </div>
@@ -198,7 +198,7 @@ export default function EcrivanceLandingPage() {
               className="mt-8 flex flex-col items-center gap-2"
             >
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-                <Link href="/practice" className="btn-primary">
+                <Link href="/onboarding" className="btn-primary">
                   Try Demo Task
                   <motion.span
                     animate={reduced ? undefined : { x: [0, 4, 0] }}
@@ -368,9 +368,9 @@ export default function EcrivanceLandingPage() {
                       ? undefined
                       : {
                           boxShadow: [
-                            "0 0 0px rgba(30,58,138,0)",
-                            "0 0 16px rgba(30,58,138,0.35)",
-                            "0 0 0px rgba(30,58,138,0)"
+                            "0 0 0px rgba(0,35,149,0)",
+                            "0 0 16px rgba(0,35,149,0.35)",
+                            "0 0 0px rgba(0,35,149,0)"
                           ]
                         }
                   }
@@ -566,7 +566,7 @@ export default function EcrivanceLandingPage() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <Link href="/practice" className="btn-primary w-full text-center">
+                  <Link href="/onboarding" className="btn-primary w-full text-center">
                     Try {tag}
                   </Link>
                 </motion.div>
@@ -747,7 +747,7 @@ export default function EcrivanceLandingPage() {
           </motion.p>
           <motion.div variants={fadeUp} className="mt-8">
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-              <Link href="/practice" className="btn-primary inline-flex">
+              <Link href="/onboarding" className="btn-primary inline-flex">
                 Try Demo Task
                 <motion.span
                   animate={reduced ? undefined : { x: [0, 5, 0] }}

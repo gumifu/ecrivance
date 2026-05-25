@@ -1,10 +1,10 @@
-import PracticeFlow from "../../components/PracticeFlow";
+import DemoFlow from "../../components/flow/DemoFlow";
 
 export const metadata = {
-  title: "Start Writing - Écrivance",
-  description: "Guided first writing practice for TCF Canada candidates."
+  title: "Practice Writing - Écrivance",
+  description: "TCF Canada Task 1 email practice with exam timing."
 };
 
 export default function PracticePage() {
-  return <PracticeFlow />;
+  return <DemoFlow />;
 }
