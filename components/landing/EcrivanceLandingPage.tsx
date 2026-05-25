@@ -10,6 +10,7 @@ import {
   Clock,
   Edit3,
   FileText,
+  Lock,
   Target,
   TrendingUp,
   Zap
@@ -546,32 +547,40 @@ export default function EcrivanceLandingPage() {
                 desc: "Develop and defend your viewpoint on a topic with clear arguments.",
                 example: "Should cities ban cars from downtown areas?"
               }
-            ].map(({ icon: Icon, tag, title, range, desc, example }) => (
-              <GlassCard key={tag} className="flex flex-col">
-                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-brand-navy">
-                  <Icon className="h-5 w-5" aria-hidden />
-                </div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-brand-navy">
-                  {tag}
-                </p>
-                <h3 className="mt-1 font-display text-xl font-bold text-gray-900">{title}</h3>
-                <p className="text-sm text-gray-400">{range}</p>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-gray-600">{desc}</p>
-                <p className="mt-4 rounded-xl bg-blue-50 p-3 text-sm text-gray-600">
-                  <span className="font-medium text-gray-700">Example: </span>
-                  {example}
-                </p>
-                <motion.div
-                  className="mt-5"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Link href="/onboarding" className="btn-primary w-full text-center">
-                    Try {tag}
-                  </Link>
-                </motion.div>
-              </GlassCard>
-            ))}
+            ].map(({ icon: Icon, tag, title, range, desc, example }) => {
+              const locked = tag !== "TASK 1";
+
+              return (
+                <GlassCard key={tag} className="flex flex-col">
+                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-brand-navy">
+                    <Icon className="h-5 w-5" aria-hidden />
+                  </div>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-brand-navy">
+                    {tag}
+                  </p>
+                  <h3 className="mt-1 font-display text-xl font-bold text-gray-900">{title}</h3>
+                  <p className="text-sm text-gray-400">{range}</p>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-gray-600">{desc}</p>
+                  <p className="mt-4 rounded-xl bg-blue-50 p-3 text-sm text-gray-600">
+                    <span className="font-medium text-gray-700">Example: </span>
+                    {example}
+                  </p>
+                  <motion.div
+                    className="mt-5"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Link
+                      href={locked ? "/signin" : "/onboarding"}
+                      className="btn-primary w-full text-center"
+                    >
+                      {locked ? <Lock className="h-4 w-4" aria-hidden /> : null}
+                      Try {tag}
+                    </Link>
+                  </motion.div>
+                </GlassCard>
+              );
+            })}
           </RevealGrid>
         </div>
       </section>

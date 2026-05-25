@@ -10,6 +10,15 @@ import {
 import { easeOut, fadeUp, scaleIn, stagger } from "../../../lib/landing-motion";
 import { FeedbackScoreBar } from "../FeedbackScoreBar";
 
+const feedbackTabs = [
+  "Overview",
+  "Summary",
+  "Errors",
+  "Vocabulary",
+  "Analysis",
+  "C1 Rewrite"
+] as const;
+
 export function FeedbackStep() {
   const reduced = useReducedMotion();
 
@@ -35,6 +44,33 @@ export function FeedbackStep() {
       <motion.p variants={fadeUp} className="mt-2 text-center text-lg text-gray-600">
         Estimated NCLC 6–7
       </motion.p>
+
+      <motion.div
+        variants={fadeUp}
+        className="mt-8 rounded-2xl border border-gray-200 bg-white/70 p-1 shadow-card backdrop-blur-md"
+        aria-label="Feedback sections"
+      >
+        <div className="grid grid-cols-2 gap-1 sm:grid-cols-3 lg:grid-cols-6">
+          {feedbackTabs.map((tab, index) => {
+            const locked = index > 0;
+            return (
+              <button
+                key={tab}
+                type="button"
+                disabled={locked}
+                className={`inline-flex items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-center text-sm font-semibold transition ${
+                  locked
+                    ? "cursor-not-allowed text-gray-400"
+                    : "bg-brand-navy text-white shadow-sm"
+                }`}
+              >
+                {locked ? <Lock className="h-3.5 w-3.5" aria-hidden /> : null}
+                {tab}
+              </button>
+            );
+          })}
+        </div>
+      </motion.div>
 
       <motion.div
         variants={fadeUp}

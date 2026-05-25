@@ -9,6 +9,7 @@ import {
   Mail,
   MessageSquare,
   Sparkles,
+  Crown,
   Zap
 } from "lucide-react";
 import { motion } from "motion/react";
@@ -54,6 +55,30 @@ export function NewPracticePage() {
           title="New Practice"
           subtitle="Free credit 1 / 3 | Choose a task and start writing"
         />
+      </motion.div>
+
+      <motion.div variants={fadeUp} className="mb-5">
+        <div className="flex flex-col gap-3 rounded-2xl border border-amber-100 bg-amber-50/70 px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-start gap-3">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-800">
+              <Crown className="h-4 w-4" aria-hidden />
+            </span>
+            <div>
+              <p className="text-sm font-semibold text-gray-900">
+                Need more practice credits?
+              </p>
+              <p className="mt-0.5 text-xs text-gray-600">
+                Upgrade to unlock unlimited tasks and full feedback history.
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/app/billing"
+            className="shrink-0 rounded-xl bg-brand-navy px-4 py-2 text-center text-sm font-semibold text-white transition hover:bg-brand-navy-hover"
+          >
+            View plans
+          </Link>
+        </div>
       </motion.div>
 
       <GlassCard className="mb-6 p-6" animate>

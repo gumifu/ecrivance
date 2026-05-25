@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { ChevronRight, Mail } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
 import { AppleIcon, GoogleIcon } from "./AuthIcons";
 
 type AuthProviderCardProps = {
@@ -10,30 +9,19 @@ type AuthProviderCardProps = {
 };
 
 export function AuthProviderCard({ mode }: AuthProviderCardProps) {
-  const reduced = useReducedMotion();
   const emailLabel = mode === "signup" ? "Sign up with email" : "Sign in with email";
 
   return (
     <div className="mt-10 w-full rounded-2xl border border-white/80 bg-white/70 p-6 shadow-card backdrop-blur-md">
       <div className="space-y-3">
-        <motion.button
-          type="button"
-          whileHover={reduced ? undefined : { scale: 1.01 }}
-          whileTap={reduced ? undefined : { scale: 0.99 }}
-          className="btn-social w-full py-3.5"
-        >
+        <Link href="/app" className="btn-social w-full py-3.5">
           <GoogleIcon />
           Continue with Google
-        </motion.button>
-        <motion.button
-          type="button"
-          whileHover={reduced ? undefined : { scale: 1.01 }}
-          whileTap={reduced ? undefined : { scale: 0.99 }}
-          className="btn-social w-full py-3"
-        >
+        </Link>
+        <Link href="/app" className="btn-social w-full py-3">
           <AppleIcon />
           Continue with Apple
-        </motion.button>
+        </Link>
       </div>
 
       <div className="relative my-6">
@@ -45,13 +33,11 @@ export function AuthProviderCard({ mode }: AuthProviderCardProps) {
         </p>
       </div>
 
-      <motion.div whileHover={reduced ? undefined : { scale: 1.01 }} whileTap={reduced ? undefined : { scale: 0.99 }}>
-        <Link href="/app" className="btn-social w-full py-3">
-          <Mail className="h-4 w-4 text-gray-600" aria-hidden />
-          {emailLabel}
-          <ChevronRight className="ml-auto h-4 w-4 text-gray-400" aria-hidden />
-        </Link>
-      </motion.div>
+      <Link href="/app" className="btn-social w-full py-3">
+        <Mail className="h-4 w-4 text-gray-600" aria-hidden />
+        {emailLabel}
+        <ChevronRight className="ml-auto h-4 w-4 text-gray-400" aria-hidden />
+      </Link>
     </div>
   );
 }
