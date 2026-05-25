@@ -42,7 +42,7 @@ export default function OnboardingShell({
   return (
     <FlowLayout actions={actions}>
       <SetupDots stepIndex={stepIndex} totalSteps={totalSteps} />
-      <div className="overflow-x-hidden">{children}</div>
+      <div className="overflow-x-hidden px-1 pb-8">{children}</div>
     </FlowLayout>
   );
 }
