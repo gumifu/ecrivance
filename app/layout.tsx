@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { defaultSeoDescription, siteName, siteUrl } from "../lib/seo";
+import { defaultSeoDescription, ogImage, siteName, siteUrl } from "../lib/seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -30,10 +30,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Écrivance - TCF Canada Writing Practice"
+        url: ogImage.path,
+        width: ogImage.width,
+        height: ogImage.height,
+        alt: ogImage.alt
       }
     ]
   },
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Écrivance - TCF Canada Writing Practice",
     description: defaultSeoDescription,
-    images: ["/twitter-image"]
+    images: [ogImage.path]
   },
   icons: {
     icon: "/favicon.png",

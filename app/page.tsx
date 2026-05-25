@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import EcrivanceLandingPage from "../components/landing/EcrivanceLandingPage";
-import { defaultSeoDescription } from "../lib/seo";
+import { defaultSeoDescription, ogImage } from "../lib/seo";
 
 export const metadata: Metadata = {
   title: "TCF Canada Writing Practice with Instant AI Feedback",
@@ -15,11 +15,20 @@ export const metadata: Metadata = {
   openGraph: {
     title: "TCF Canada Writing Practice with Instant AI Feedback",
     description: defaultSeoDescription,
-    url: "/"
+    url: "/",
+    images: [
+      {
+        url: ogImage.path,
+        width: ogImage.width,
+        height: ogImage.height,
+        alt: ogImage.alt
+      }
+    ]
   },
   twitter: {
     title: "TCF Canada Writing Practice with Instant AI Feedback",
-    description: defaultSeoDescription
+    description: defaultSeoDescription,
+    images: [ogImage.path]
   }
 };
 
