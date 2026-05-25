@@ -10,6 +10,7 @@ import {
   MessageSquare,
   Sparkles,
   Crown,
+  Lock,
   Zap
 } from "lucide-react";
 import { motion } from "motion/react";
@@ -53,7 +54,12 @@ export function NewPracticePage() {
       <motion.div variants={fadeUp}>
         <AppPageHeader
           title="New Practice"
-          subtitle="Free credit 1 / 3 | Choose a task and start writing"
+          subtitle="Choose a task and start writing"
+          badge={
+            <span className="inline-flex rounded-full border border-blue-100 bg-white px-3 py-1 text-sm font-semibold text-brand-navy shadow-sm">
+              Free · 2 Credits Left
+            </span>
+          }
         />
       </motion.div>
 
@@ -128,11 +134,17 @@ export function NewPracticePage() {
       </motion.h2>
       <div className="mb-10 grid gap-4 md:grid-cols-2">
         <GlassCard className="p-5" animate>
-          <div className="flex gap-4">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-brand-navy">
-              <Zap className="h-5 w-5" aria-hidden />
-            </span>
-            <div>
+          <div className="flex h-full flex-col gap-4">
+            <div className="flex items-start justify-between gap-3">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-brand-navy">
+                <Zap className="h-5 w-5" aria-hidden />
+              </span>
+              <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-brand-navy">
+                <Lock className="h-3 w-3" aria-hidden />
+                1 credit required
+              </span>
+            </div>
+            <div className="flex-1">
               <p className="font-semibold text-gray-900">Quick Practice</p>
               <p className="mt-1 font-display text-2xl font-bold text-brand-navy">15–20 min</p>
               <p className="mt-2 text-sm text-gray-600">
@@ -144,14 +156,23 @@ export function NewPracticePage() {
                 <li>· Perfect for daily practice</li>
               </ul>
             </div>
+            <button type="button" className="btn-secondary-gray w-full px-4 py-2.5 text-sm">
+              Start with credit
+            </button>
           </div>
         </GlassCard>
         <GlassCard className="p-5" animate>
-          <div className="flex gap-4">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-brand-navy">
-              <Clock className="h-5 w-5" aria-hidden />
-            </span>
-            <div>
+          <div className="flex h-full flex-col gap-4">
+            <div className="flex items-start justify-between gap-3">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-brand-navy">
+                <Clock className="h-5 w-5" aria-hidden />
+              </span>
+              <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-900">
+                <Lock className="h-3 w-3" aria-hidden />
+                Pro only
+              </span>
+            </div>
+            <div className="flex-1">
               <p className="font-semibold text-gray-900">Full Exam Simulation</p>
               <p className="mt-1 font-display text-2xl font-bold text-brand-navy">60 min</p>
               <p className="mt-2 text-sm text-gray-600">
@@ -163,6 +184,10 @@ export function NewPracticePage() {
                 <li>· Complete assessment</li>
               </ul>
             </div>
+            <Link href="/app/billing" className="btn-primary w-full px-4 py-2.5 text-sm">
+              <Lock className="h-4 w-4" aria-hidden />
+              Upgrade to unlock
+            </Link>
           </div>
         </GlassCard>
       </div>

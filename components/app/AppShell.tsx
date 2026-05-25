@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { AppSidebar } from "./AppSidebar";
+import EcrivanceLogo from "../brand/EcrivanceLogo";
 
 type AppShellProps = {
   children: React.ReactNode;
@@ -42,7 +43,7 @@ export function AppShell({ children }: AppShellProps) {
           >
             <Menu className="h-5 w-5" />
           </button>
-          <span className="text-sm font-semibold text-brand-navy">Écrivance</span>
+          <EcrivanceLogo height={22} />
         </div>
 
         <main className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-4 py-6 sm:px-8 lg:px-8 lg:py-8">
