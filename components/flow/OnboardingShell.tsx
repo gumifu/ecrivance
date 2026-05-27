@@ -18,7 +18,7 @@ export function SetupDots({
 }) {
   return (
     <div
-      className="mb-8 flex shrink-0 items-center justify-center gap-2"
+      className="mb-6 flex shrink-0 items-center justify-center gap-2 md:mb-8"
       aria-label={`Step ${stepIndex + 1} of ${totalSteps}`}
     >
       {Array.from({ length: totalSteps }).map((_, index) => (

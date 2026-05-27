@@ -68,23 +68,23 @@ input::placeholder {
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-navy px-8 py-3 text-base font-semibold text-white transition hover:bg-brand-navy-hover;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-navy px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-navy-hover sm:px-8 sm:py-3 sm:text-base;
   }
 
   .btn-primary-sm {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-navy px-6 py-2 text-base font-semibold text-white transition hover:bg-brand-navy-hover;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-navy px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-navy-hover sm:px-6 sm:text-base;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border-2 border-brand-navy bg-white px-8 py-3 text-base font-semibold text-brand-navy transition hover:bg-brand-blue-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border-2 border-brand-navy bg-white px-5 py-2.5 text-sm font-semibold text-brand-navy transition hover:bg-brand-blue-50 sm:px-8 sm:py-3 sm:text-base;
   }
 
   .btn-secondary-gray {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border-2 border-gray-300 bg-white px-8 py-3 text-base font-semibold text-gray-700 transition hover:bg-gray-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border-2 border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 sm:px-8 sm:py-3 sm:text-base;
   }
 
   .btn-accent {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-amber-400 px-8 py-3 text-base font-semibold text-gray-900 transition hover:bg-amber-500;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-amber-400 px-5 py-2.5 text-sm font-semibold text-gray-900 transition hover:bg-amber-500 sm:px-8 sm:py-3 sm:text-base;
     color: var(--accent-button-text);
   }
 

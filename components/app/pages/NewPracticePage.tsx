@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import { fadeUp, stagger } from "../../../lib/landing-motion";
+import { useMobileReducedMotion } from "../../../lib/use-mobile-reduced-motion";
 import { AppPageHeader } from "../AppPageHeader";
 import { GlassCard } from "../GlassCard";
 
@@ -49,8 +50,15 @@ const taskCards = [
 ] as const;
 
 export function NewPracticePage() {
+  const reduced = useMobileReducedMotion();
+
   return (
-    <motion.div initial="hidden" animate="show" variants={stagger(0.08)} className="mx-auto max-w-4xl">
+    <motion.div
+      initial={reduced ? false : "hidden"}
+      animate="show"
+      variants={stagger(0.08)}
+      className="mx-auto max-w-4xl"
+    >
       <motion.div variants={fadeUp}>
         <AppPageHeader
           title="New Practice"
@@ -63,7 +71,7 @@ export function NewPracticePage() {
         />
       </motion.div>
 
-      <motion.div variants={fadeUp} className="mb-5">
+      <motion.div variants={fadeUp} className="mb-4 md:mb-5">
         <div className="flex flex-col gap-3 rounded-2xl border border-amber-100 bg-amber-50/70 px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-start gap-3">
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-800">
@@ -87,7 +95,7 @@ export function NewPracticePage() {
         </div>
       </motion.div>
 
-      <GlassCard className="mb-6 p-6" animate>
+      <GlassCard className="mb-4 p-5 md:mb-6 md:p-6" animate>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-brand-navy">
             <Sparkles className="h-5 w-5" aria-hidden />
@@ -104,14 +112,14 @@ export function NewPracticePage() {
               focuses on linking ideas smoothly.
             </p>
           </div>
-          <Link href="/practice" className="btn-primary shrink-0 self-start">
+          <Link href="/practice" className="btn-primary w-full shrink-0 self-start sm:w-auto">
             Start
             <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
         </div>
       </GlassCard>
 
-      <GlassCard className="mb-8 p-5" animate>
+      <GlassCard className="mb-6 p-5 md:mb-8" animate>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-sm font-medium text-gray-800">From your last practice:</p>
@@ -132,7 +140,7 @@ export function NewPracticePage() {
       <motion.h2 variants={fadeUp} className="mb-4 font-display text-xl font-bold text-gray-900">
         Practice Mode
       </motion.h2>
-      <div className="mb-10 grid gap-4 md:grid-cols-2">
+      <div className="mb-8 grid gap-4 md:mb-10 md:grid-cols-2">
         <GlassCard className="p-5" animate>
           <div className="flex h-full flex-col gap-4">
             <div className="flex items-start justify-between gap-3">

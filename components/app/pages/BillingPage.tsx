@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, CreditCard } from "lucide-react";
+import { CreditCard } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { fadeUp, stagger } from "../../../lib/landing-motion";
@@ -9,30 +9,37 @@ import { GlassCard } from "../GlassCard";
 
 const plans = [
   {
-    name: "Pro",
-    price: "$19",
-    period: "/month",
-    features: [
-      "Unlimited practice sessions",
-      "Full AI feedback",
-      "Score history & analytics",
-      "Priority support"
-    ],
-    cta: "Upgrade to Pro",
-    highlight: true
+    name: "TCF Sprint",
+    price: "$7.00 CAD",
+    description: "2 weeks of access. Ideal for candidates 1–2 weeks before the exam.",
+    note: "Cancel anytime. AI feedback included.",
+    cta: "Switch next renewal",
+    badge: null,
+    highlight: false,
+    current: false,
+    tone: "mint"
   },
   {
-    name: "Premium",
-    price: "$39",
-    period: "/month",
-    features: [
-      "Everything in Pro",
-      "Full exam simulations",
-      "Personalized study path",
-      "1-on-1 coaching session"
-    ],
-    cta: "Upgrade to Premium",
-    highlight: false
+    name: "Essential Prep",
+    price: "$12.99 CAD",
+    description: "1 month of access. Ideal for most candidates preparing over 1 month.",
+    note: "No charge today. Your current plan stays active until renewal.",
+    cta: "Switch next renewal",
+    badge: "Most popular",
+    highlight: true,
+    current: false,
+    tone: "amber"
+  },
+  {
+    name: "Complete Prep",
+    price: "$27.00 CAD",
+    description: "3 months of access. Equivalent to $9/mo - save $11.97 vs monthly.",
+    note: "No charge today. Your current plan stays active until renewal.",
+    cta: "Switch next renewal",
+    badge: null,
+    highlight: false,
+    current: false,
+    tone: "white"
   }
 ] as const;
 
@@ -61,35 +68,37 @@ export function BillingPage() {
         </div>
       </GlassCard>
 
-      <div className="mb-8 grid gap-6 md:grid-cols-2">
+      <div className="mb-8 grid items-stretch gap-5 lg:grid-cols-3">
         {plans.map((plan) => (
           <GlassCard
             key={plan.name}
-            className={`flex flex-col p-6 ${plan.highlight ? "ring-2 ring-brand-navy/20" : ""}`}
+            className={`flex h-full min-h-[295px] flex-col p-5 md:p-6 ${
+              plan.highlight ? "bg-amber-50/60 ring-2 ring-amber-200/70" : ""
+            } ${plan.tone === "mint" ? "bg-emerald-50/55" : ""}`}
             animate
           >
-            {plan.highlight ? (
-              <span className="mb-3 w-fit rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-900">
-                Most popular
-              </span>
-            ) : null}
-            <p className="font-display text-xl font-bold text-gray-900">{plan.name}</p>
-            <p className="mt-2">
-              <span className="font-display text-4xl font-bold text-brand-navy">{plan.price}</span>
-              <span className="text-gray-500">{plan.period}</span>
-            </p>
-            <ul className="mt-6 flex-1 space-y-3">
-              {plan.features.map((f) => (
-                <li key={f} className="flex items-start gap-2 text-sm text-gray-600">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-600" aria-hidden />
-                  {f}
-                </li>
-              ))}
-            </ul>
-            <Link
-              href="/signup"
-              className={`mt-6 w-full text-center ${plan.highlight ? "btn-primary" : "btn-secondary-gray"} py-3 text-sm`}
-            >
+            <div className="mb-3 flex items-start justify-between gap-3">
+              <p className="font-display text-xl font-bold leading-tight text-gray-900 md:text-2xl">
+                {plan.name}
+              </p>
+              {plan.badge ? (
+                <span
+                  className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold shadow-sm ${
+                    plan.current
+                      ? "bg-brand-navy text-white"
+                      : "bg-brand-navy px-3.5 py-1.5 text-white ring-2 ring-brand-navy/10"
+                  }`}
+                >
+                  {plan.badge}
+                </span>
+              ) : null}
+            </div>
+
+            <p className="font-display text-3xl font-bold text-gray-950">{plan.price}</p>
+            <p className="mt-3 text-sm leading-relaxed text-gray-600">{plan.description}</p>
+            <p className="mt-5 flex-1 text-sm leading-relaxed text-gray-700">{plan.note}</p>
+
+            <Link href="/signup" className="btn-primary mt-6 w-full px-4 py-3 text-center text-sm">
               {plan.cta}
             </Link>
           </GlassCard>

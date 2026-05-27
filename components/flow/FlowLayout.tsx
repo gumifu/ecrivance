@@ -1,8 +1,9 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { FlowHeader } from "./FlowHeader";
 import { SiteFooter } from "./SiteFooter";
+import { useMobileReducedMotion } from "../../lib/use-mobile-reduced-motion";
 
 type FlowLayoutProps = {
   children: React.ReactNode;
@@ -19,10 +20,10 @@ export default function FlowLayout({
   showFooter = true,
   maxWidth = "md"
 }: FlowLayoutProps) {
-  const reduced = useReducedMotion();
+  const reduced = useMobileReducedMotion();
   const widthClass = maxWidth === "lg" ? "max-w-3xl" : "max-w-3xl";
 
-  const mainClass = `relative z-10 mx-auto w-full flex-1 overflow-x-hidden px-6 pt-8 pb-28 ${widthClass}`;
+  const mainClass = `relative z-10 mx-auto w-full flex-1 overflow-x-hidden px-5 pt-6 pb-24 sm:px-6 md:pt-8 md:pb-28 ${widthClass}`;
 
   return (
     <div className="lp-page relative min-h-dvh overflow-x-hidden text-gray-900">

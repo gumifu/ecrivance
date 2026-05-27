@@ -3,11 +3,11 @@ import type { Transition, Variants } from "motion/react";
 export const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 18 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: easeOut }
+    transition: { duration: 0.42, ease: easeOut }
   }
 };
 
@@ -20,20 +20,20 @@ export const fadeIn: Variants = {
 };
 
 export const fadeInLeft: Variants = {
-  hidden: { opacity: 0, x: -32 },
+  hidden: { opacity: 0, x: -18 },
   show: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.6, ease: easeOut }
+    transition: { duration: 0.42, ease: easeOut }
   }
 };
 
 export const fadeInRight: Variants = {
-  hidden: { opacity: 0, x: 32 },
+  hidden: { opacity: 0, x: 18 },
   show: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.6, ease: easeOut }
+    transition: { duration: 0.42, ease: easeOut }
   }
 };
 
@@ -57,8 +57,8 @@ export function stagger(delayChildren = 0.08, delay = 0): Variants {
 
 export const scrollViewport = {
   once: true,
-  margin: "-80px" as const,
-  amount: 0.2 as const
+  margin: "-24px" as const,
+  amount: 0.12 as const
 };
 
 export function motionTransition(

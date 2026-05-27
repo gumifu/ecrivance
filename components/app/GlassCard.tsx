@@ -1,5 +1,6 @@
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { fadeUp } from "../../lib/landing-motion";
+import { useMobileReducedMotion } from "../../lib/use-mobile-reduced-motion";
 
 type GlassCardProps = {
   children: React.ReactNode;
@@ -8,7 +9,7 @@ type GlassCardProps = {
 };
 
 export function GlassCard({ children, className = "", animate = false }: GlassCardProps) {
-  const reduced = useReducedMotion();
+  const reduced = useMobileReducedMotion();
 
   const card = (
     <div

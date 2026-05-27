@@ -1,8 +1,9 @@
 "use client";
 
 import { CheckCircle2, Sparkles } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { fadeUp, stagger } from "../../../lib/landing-motion";
+import { useMobileReducedMotion } from "../../../lib/use-mobile-reduced-motion";
 
 const introItems = [
   {
@@ -20,7 +21,7 @@ const introItems = [
 ] as const;
 
 export function IntroStep() {
-  const reduced = useReducedMotion();
+  const reduced = useMobileReducedMotion();
 
   return (
     <motion.div
@@ -29,10 +30,10 @@ export function IntroStep() {
       variants={stagger(0.08)}
     >
       <motion.div variants={fadeUp} className="text-center">
-        <h1 className="font-display text-3xl font-bold text-gray-900 md:text-4xl">
+        <h1 className="font-display text-2xl font-bold text-gray-900 md:text-4xl">
           Let&apos;s find your current TCF Writing level.
         </h1>
-        <p className="mx-auto mt-3 max-w-xl text-base leading-relaxed text-gray-500">
+        <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-gray-500 md:text-base">
           You&apos;ll complete a short real-style writing task and receive AI feedback
           in under 30 seconds.
         </p>
@@ -40,7 +41,7 @@ export function IntroStep() {
 
       <motion.div
         variants={fadeUp}
-        className="mx-auto mt-10 max-w-2xl rounded-3xl border border-white/80 bg-white/65 p-6 text-left shadow-card backdrop-blur-md md:p-8"
+        className="mx-auto mt-7 max-w-2xl rounded-3xl border border-white/80 bg-white/65 p-5 text-left shadow-card backdrop-blur-md md:mt-10 md:p-8"
       >
         <motion.div variants={fadeUp} className="flex flex-col gap-4 sm:flex-row sm:items-center">
           <motion.div
@@ -60,24 +61,24 @@ export function IntroStep() {
           </div>
         </motion.div>
 
-        <div className="mt-6 grid gap-3 sm:grid-cols-3">
+        <div className="mt-5 grid gap-3 sm:grid-cols-3 md:mt-6">
           <motion.div variants={fadeUp} className="rounded-2xl bg-blue-50/70 px-4 py-3">
-            <p className="font-display text-2xl font-bold text-brand-navy">3 Free Credits</p>
+            <p className="font-display text-xl font-bold text-brand-navy md:text-2xl">3 Free Credits</p>
             <p className="mt-1 text-xs font-medium text-gray-600">
               Start with a real TCF task
             </p>
           </motion.div>
           <motion.div variants={fadeUp} className="rounded-2xl bg-blue-50/70 px-4 py-3">
-            <p className="font-display text-2xl font-bold text-brand-navy">&lt;30s</p>
+            <p className="font-display text-xl font-bold text-brand-navy md:text-2xl">&lt;30s</p>
             <p className="mt-1 text-xs font-medium text-gray-600">AI feedback time</p>
           </motion.div>
           <motion.div variants={fadeUp} className="rounded-2xl bg-blue-50/70 px-4 py-3">
-            <p className="font-display text-2xl font-bold text-brand-navy">NCLC</p>
+            <p className="font-display text-xl font-bold text-brand-navy md:text-2xl">NCLC</p>
             <p className="mt-1 text-xs font-medium text-gray-600">Level estimate</p>
           </motion.div>
         </div>
 
-        <ul className="mt-6 space-y-4">
+        <ul className="mt-5 space-y-3 md:mt-6 md:space-y-4">
           {introItems.map((item) => (
             <motion.li key={item.title} variants={fadeUp} className="flex gap-3">
               <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-navy" aria-hidden />

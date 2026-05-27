@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { AppSidebar } from "./AppSidebar";
 import EcrivanceLogo from "../brand/EcrivanceLogo";
+import { useMobileReducedMotion } from "../../lib/use-mobile-reduced-motion";
 
 type AppShellProps = {
   children: React.ReactNode;
@@ -12,7 +13,7 @@ type AppShellProps = {
 
 export function AppShell({ children }: AppShellProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const reduced = useReducedMotion();
+  const reduced = useMobileReducedMotion();
 
   return (
     <div className="lp-page flex min-h-dvh overflow-x-hidden text-gray-900">
@@ -34,7 +35,7 @@ export function AppShell({ children }: AppShellProps) {
       </div>
 
       <div className="relative z-20 flex min-w-0 flex-1 flex-col lg:ml-60">
-        <div className="flex items-center gap-3 border-b border-gray-200 bg-white/80 px-4 py-3 backdrop-blur-md lg:hidden">
+        <div className="sticky top-0 z-30 flex items-center gap-3 border-b border-gray-200 bg-white/85 px-4 py-3 backdrop-blur-md lg:hidden">
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
@@ -46,7 +47,7 @@ export function AppShell({ children }: AppShellProps) {
           <EcrivanceLogo height={22} />
         </div>
 
-        <main className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-4 py-6 sm:px-8 lg:px-8 lg:py-8">
+        <main className="min-h-0 flex-1 overflow-x-hidden px-4 py-5 sm:px-8 lg:overflow-y-auto lg:px-8 lg:py-8">
           {children}
         </main>
       </div>

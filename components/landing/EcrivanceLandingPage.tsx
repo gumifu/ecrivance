@@ -15,7 +15,7 @@ import {
   TrendingUp,
   Zap
 } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import EcrivanceLogo from "../brand/EcrivanceLogo";
 import {
   easeOut,
@@ -26,6 +26,7 @@ import {
   scrollViewport,
   stagger
 } from "../../lib/landing-motion";
+import { useMobileReducedMotion } from "../../lib/use-mobile-reduced-motion";
 import { ProgressChart } from "./ProgressChart";
 import { ScoreBar } from "./ScoreBar";
 
@@ -39,7 +40,7 @@ function GlassCard({
   return (
     <motion.div
       variants={fadeUp}
-      className={`rounded-2xl border border-white/80 bg-white/70 p-6 shadow-card backdrop-blur-md ${className}`}
+      className={`rounded-2xl border border-white/80 bg-white/70 p-5 shadow-card backdrop-blur-md md:p-6 ${className}`}
     >
       {children}
     </motion.div>
@@ -55,7 +56,7 @@ function SectionHeading({
 }) {
   return (
     <motion.div
-      className="mx-auto mb-12 max-w-2xl text-center"
+      className="mx-auto mb-8 max-w-2xl text-center md:mb-12"
       initial="hidden"
       whileInView="show"
       viewport={scrollViewport}
@@ -63,12 +64,12 @@ function SectionHeading({
     >
       <motion.h2
         variants={fadeUp}
-        className="font-display text-3xl font-bold text-gray-900 md:text-4xl"
+        className="font-display text-2xl font-bold text-gray-900 md:text-4xl"
       >
         {title}
       </motion.h2>
       {subtitle ? (
-        <motion.p variants={fadeUp} className="mt-3 text-lg text-gray-500">
+        <motion.p variants={fadeUp} className="mt-3 text-base leading-relaxed text-gray-500 md:text-lg">
           {subtitle}
         </motion.p>
       ) : null}
@@ -97,7 +98,7 @@ function RevealGrid({
 }
 
 export default function EcrivanceLandingPage() {
-  const reduced = useReducedMotion();
+  const reduced = useMobileReducedMotion();
 
   return (
     <div className="lp-page min-h-screen overflow-x-hidden text-gray-900">
@@ -107,7 +108,7 @@ export default function EcrivanceLandingPage() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: reduced ? 0.01 : 0.45, ease: easeOut }}
       >
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 sm:px-6 sm:py-4">
           <Link href="/">
             <EcrivanceLogo height={22} />
           </Link>
@@ -137,7 +138,7 @@ export default function EcrivanceLandingPage() {
       </motion.header>
 
       {/* Hero */}
-      <section className="relative px-6 pb-16 pt-12 md:pt-20">
+      <section className="relative px-5 pb-12 pt-8 sm:px-6 md:pb-16 md:pt-20">
         <motion.div
           className="lp-orb lp-orb-a"
           aria-hidden
@@ -175,7 +176,7 @@ export default function EcrivanceLandingPage() {
             </motion.span>
             <motion.h1
               variants={fadeUp}
-              className="mt-6 font-display text-4xl font-bold leading-tight text-gray-900 sm:text-5xl md:text-6xl"
+              className="mt-5 font-display text-3xl font-bold leading-tight text-gray-900 sm:text-5xl md:mt-6 md:text-6xl"
             >
               TCF Canada Writing,
               <br />
@@ -189,14 +190,14 @@ export default function EcrivanceLandingPage() {
             </motion.h1>
             <motion.p
               variants={fadeUp}
-              className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-gray-500"
+              className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-gray-500 md:mt-5 md:text-lg"
             >
               Practice Tasks 1, 2, and 3 in real exam conditions with AI feedback aligned
               to TCF Canada scoring criteria.
             </motion.p>
             <motion.div
               variants={fadeUp}
-              className="mt-8 flex flex-col items-center gap-2"
+              className="mt-6 flex flex-col items-center gap-2 md:mt-8"
             >
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
                 <Link href="/onboarding" className="btn-primary">
@@ -214,7 +215,7 @@ export default function EcrivanceLandingPage() {
             </motion.div>
           </motion.div>
 
-          <RevealGrid className="mx-auto mt-14 grid max-w-4xl gap-5 md:grid-cols-3">
+          <RevealGrid className="mx-auto mt-10 grid max-w-4xl gap-4 md:mt-14 md:grid-cols-3 md:gap-5">
             <GlassCard>
               <p className="text-xs font-medium uppercase tracking-wider text-gray-400">
                 Your Results
@@ -266,7 +267,7 @@ export default function EcrivanceLandingPage() {
           </RevealGrid>
 
           <motion.div
-            className="mt-14 flex flex-wrap justify-center gap-10 text-center md:gap-16"
+            className="mt-10 flex flex-wrap justify-center gap-6 text-center md:mt-14 md:gap-16"
             initial="hidden"
             whileInView="show"
             viewport={scrollViewport}
@@ -288,7 +289,7 @@ export default function EcrivanceLandingPage() {
       </section>
 
       {/* Pain points */}
-      <section className="px-6 py-20">
+      <section className="px-5 py-14 sm:px-6 md:py-20">
         <div className="mx-auto max-w-5xl">
           <SectionHeading
             title="Preparing can feel overwhelming."
@@ -332,7 +333,7 @@ export default function EcrivanceLandingPage() {
       </section>
 
       {/* How it works */}
-      <section id="how-it-works" className="px-6 py-20">
+      <section id="how-it-works" className="px-5 py-14 sm:px-6 md:py-20">
         <div className="mx-auto max-w-5xl">
           <SectionHeading
             title="How Écrivance Works"
@@ -393,8 +394,8 @@ export default function EcrivanceLandingPage() {
       </section>
 
       {/* Feedback */}
-      <section id="feedback" className="px-6 py-20">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
+      <section id="feedback" className="px-5 py-14 sm:px-6 md:py-20">
+        <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <motion.div
             initial="hidden"
             whileInView="show"
@@ -452,12 +453,12 @@ export default function EcrivanceLandingPage() {
             viewport={scrollViewport}
             variants={fadeInRight}
           >
-            <GlassCard className="p-8">
+            <GlassCard className="p-5 md:p-8">
               <span className="rounded-full bg-blue-50 px-3 py-1.5 text-xs font-semibold text-brand-navy">
                 Task 2 — Article
               </span>
               <motion.p
-                className="mt-6 font-display text-5xl font-bold text-brand-navy"
+                className="mt-5 font-display text-4xl font-bold text-brand-navy md:mt-6 md:text-5xl"
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={scrollViewport}
@@ -515,7 +516,7 @@ export default function EcrivanceLandingPage() {
       </section>
 
       {/* Tasks */}
-      <section className="px-6 py-20">
+      <section className="px-5 py-14 sm:px-6 md:py-20">
         <div className="mx-auto max-w-5xl">
           <SectionHeading
             title="Practice All 3 TCF Writing Tasks"
@@ -586,8 +587,8 @@ export default function EcrivanceLandingPage() {
       </section>
 
       {/* Progress */}
-      <section className="px-6 py-20">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
+      <section className="px-5 py-14 sm:px-6 md:py-20">
+        <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <motion.div
             initial="hidden"
             whileInView="show"
@@ -647,7 +648,7 @@ export default function EcrivanceLandingPage() {
             viewport={scrollViewport}
             variants={fadeInRight}
           >
-            <GlassCard className="p-7">
+            <GlassCard className="p-5 md:p-7">
               <div className="mb-5 flex items-center justify-between">
                 <h3 className="font-semibold text-gray-800">Your Progress</h3>
                 <span className="text-xs text-gray-400">6 weeks</span>
@@ -677,10 +678,10 @@ export default function EcrivanceLandingPage() {
       </section>
 
       {/* Built around TCF */}
-      <section className="px-6 py-20">
+      <section className="px-5 py-14 sm:px-6 md:py-20">
         <div className="mx-auto max-w-5xl">
           <motion.div
-            className="rounded-2xl bg-gradient-to-br from-brand-navy to-[#5266c5] p-10 text-center text-white md:p-12"
+            className="rounded-2xl bg-gradient-to-br from-brand-navy to-[#5266c5] p-6 text-center text-white md:p-12"
             initial={{ opacity: 0, y: 36, scale: 0.97 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={scrollViewport}
@@ -690,7 +691,7 @@ export default function EcrivanceLandingPage() {
               Built around the real TCF Canada exam.
             </h2>
             <motion.div
-              className="mt-10 grid gap-6 text-left md:grid-cols-3"
+              className="mt-8 grid gap-4 text-left md:mt-10 md:grid-cols-3 md:gap-6"
               variants={stagger(0.14)}
               initial="hidden"
               whileInView="show"
@@ -729,7 +730,7 @@ export default function EcrivanceLandingPage() {
       </section>
 
       {/* CTA */}
-      <section id="pricing" className="px-6 py-24 text-center">
+      <section id="pricing" className="px-5 py-16 text-center sm:px-6 md:py-24">
         <motion.div
           className="mx-auto max-w-xl"
           initial="hidden"
@@ -745,7 +746,7 @@ export default function EcrivanceLandingPage() {
           </motion.span>
           <motion.h2
             variants={fadeUp}
-            className="mt-6 font-display text-4xl font-bold text-gray-900"
+            className="mt-5 font-display text-3xl font-bold text-gray-900 md:mt-6 md:text-4xl"
           >
             Start your first practice
             <br />
@@ -773,7 +774,7 @@ export default function EcrivanceLandingPage() {
 
       {/* Footer */}
       <motion.footer
-        className="border-t border-gray-100 px-6 py-12"
+        className="border-t border-gray-100 px-5 py-10 sm:px-6 md:py-12"
         initial="hidden"
         whileInView="show"
         viewport={scrollViewport}
