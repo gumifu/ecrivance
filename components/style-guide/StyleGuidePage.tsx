@@ -108,6 +108,12 @@ export default function StyleGuidePage() {
           <SectionTitle>
             Typography | Heading : Sora_Bold / Body text : Inter
           </SectionTitle>
+          <p className="mt-3 max-w-2xl text-base leading-relaxed text-gray-600">
+            We use two typefaces: Sora and Inter. Sora is used for headings to give
+            the interface a clear and confident voice, while Inter is used for body
+            text to keep long study sessions easy to read. Their clean shapes and
+            spacing reduce confusion and make scanning information easier.
+          </p>
           <div className="mt-8 rounded-xl border-2 border-gray-200 p-8 md:p-10">
             <div className="space-y-8">
               <div>

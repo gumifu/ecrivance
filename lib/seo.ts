@@ -11,7 +11,7 @@ export const siteUrl = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL ?? DEFA
 export const siteName = "Écrivance";
 
 export const ogImage = {
-  alt: "Écrivance - TCF Canada Writing Practice",
+  alt: "Écrivance — TCF Canada Writing, for your Express Entry",
   height: 537,
   path: "/og/ecrivance-og.png",
   width: 1024

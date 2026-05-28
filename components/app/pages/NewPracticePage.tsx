@@ -27,6 +27,7 @@ const taskCards = [
     words: "150–200 words",
     desc: "Simple communication scenario",
     icon: Mail,
+    href: "/practice",
     recommended: false
   },
   {
@@ -36,6 +37,7 @@ const taskCards = [
     words: "200–250 words",
     desc: "Structured explanation or discussion",
     icon: FileText,
+    href: "/practice/task-2",
     recommended: true
   },
   {
@@ -45,6 +47,7 @@ const taskCards = [
     words: "300+ words",
     desc: "Opinion-based argumentation",
     icon: MessageSquare,
+    href: "/practice/task-3",
     recommended: false
   }
 ] as const;
@@ -112,7 +115,10 @@ export function NewPracticePage() {
               focuses on linking ideas smoothly.
             </p>
           </div>
-          <Link href="/practice" className="btn-primary w-full shrink-0 self-start sm:w-auto">
+          <Link
+            href="/practice/task-2"
+            className="btn-primary inline-flex w-full shrink-0 self-start sm:w-auto"
+          >
             Start
             <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
@@ -223,7 +229,7 @@ export function NewPracticePage() {
               <p className="mt-1 text-xs text-gray-500">{task.words}</p>
               <p className="mt-3 flex-1 text-sm text-gray-600">{task.desc}</p>
               <Link
-                href="/practice"
+                href={task.href}
                 className={`mt-4 w-full text-center ${task.recommended ? "btn-primary" : "btn-secondary-gray"} py-2.5 text-sm`}
               >
                 Start {task.label}

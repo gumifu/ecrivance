@@ -185,7 +185,7 @@ export default function EcrivanceLandingPage() {
                 animate={reduced ? undefined : { opacity: [0.75, 1, 0.75] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
-                mastered.
+                for your Express Entry.
               </motion.span>
             </motion.h1>
             <motion.p
