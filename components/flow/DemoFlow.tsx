@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { easeOut } from "../../lib/landing-motion";
 import FlowLayout from "./FlowLayout";
@@ -51,6 +51,10 @@ export default function DemoFlow() {
     }
     setStep(next);
   }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [step]);
 
   const finishPreparing = useCallback(() => goTo("writing"), [goTo]);
   const finishAnalyzing = useCallback(() => goTo("feedback"), [goTo]);
