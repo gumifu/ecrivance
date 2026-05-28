@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { useRef } from "react";
+import { motion, useInView, useReducedMotion } from "motion/react";
 import { easeOut, motionTransition, scrollViewport } from "../../lib/landing-motion";
 
 const defaultData = [
@@ -19,6 +20,8 @@ type ProgressChartProps = {
 
 export function ProgressChart({ data = defaultData, height = 140 }: ProgressChartProps) {
   const reduced = useReducedMotion();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, scrollViewport);
   const padding = { top: 12, right: 12, bottom: 28, left: 36 };
   const width = 520;
   const chartHeight = height - padding.top - padding.bottom;
@@ -39,76 +42,78 @@ export function ProgressChart({ data = defaultData, height = 140 }: ProgressChar
   const linePath = points.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${p.y}`).join(" ");
 
   return (
-    <svg
-      viewBox={`0 0 ${width} ${height}`}
-      className="w-full"
-      role="img"
-      aria-label="Score progress over 6 weeks"
-    >
-      {[40, 55, 70, 85, 100].map((tick) => {
-        const y =
-          padding.top +
-          chartHeight -
-          ((tick - minScore) / (maxScore - minScore)) * chartHeight;
-        return (
-          <g key={tick}>
-            <line
-              x1={padding.left}
-              y1={y}
-              x2={width - padding.right}
-              y2={y}
-              stroke="#f3f4f6"
-              strokeWidth={1}
-            />
-            <text x={8} y={y + 4} fill="#9ca3af" fontSize={11}>
-              {tick}
-            </text>
-          </g>
-        );
-      })}
-      <motion.path
-        d={linePath}
-        fill="none"
-        stroke="#002395"
-        strokeWidth={2.5}
-        strokeLinecap="round"
-        initial={{ pathLength: 0, opacity: 0.6 }}
-        whileInView={{ pathLength: 1, opacity: 1 }}
-        viewport={scrollViewport}
-        transition={motionTransition(reduced ?? false, {
-          duration: 1.2,
-          ease: easeOut
+    <div ref={containerRef} className="w-full">
+      <svg
+        viewBox={`0 0 ${width} ${height}`}
+        className="w-full"
+        role="img"
+        aria-label="Score progress over 6 weeks"
+      >
+        {[40, 55, 70, 85, 100].map((tick) => {
+          const y =
+            padding.top +
+            chartHeight -
+            ((tick - minScore) / (maxScore - minScore)) * chartHeight;
+          return (
+            <g key={tick}>
+              <line
+                x1={padding.left}
+                y1={y}
+                x2={width - padding.right}
+                y2={y}
+                stroke="#f3f4f6"
+                strokeWidth={1}
+              />
+              <text x={8} y={y + 4} fill="#9ca3af" fontSize={11}>
+                {tick}
+              </text>
+            </g>
+          );
         })}
-      />
-      {points.map((p, i) => (
-        <motion.circle
-          key={p.week}
-          cx={p.x}
-          cy={p.y}
-          r={4}
-          fill="#002395"
-          initial={{ scale: 0, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          viewport={scrollViewport}
+        <motion.path
+          d={linePath}
+          fill="none"
+          stroke="#002395"
+          strokeWidth={2.5}
+          strokeLinecap="round"
+          initial={{ pathLength: 0, opacity: 0.6 }}
+          animate={
+            isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0.6 }
+          }
           transition={motionTransition(reduced ?? false, {
-            delay: 0.35 + i * 0.08,
-            duration: 0.35,
+            duration: 1.2,
             ease: easeOut
           })}
         />
-      ))}
-      {points.map((p) => (
-        <text
-          key={`${p.week}-label`}
-          x={p.x}
-          y={height - 6}
-          textAnchor="middle"
-          fill="#9ca3af"
-          fontSize={11}
-        >
-          {p.week}
-        </text>
-      ))}
-    </svg>
+        {points.map((p, i) => (
+          <motion.circle
+            key={p.week}
+            cx={p.x}
+            cy={p.y}
+            r={4}
+            fill="#002395"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+            transition={motionTransition(reduced ?? false, {
+              delay: 0.35 + i * 0.08,
+              duration: 0.35,
+              ease: easeOut
+            })}
+          />
+        ))}
+        {points.map((p) => (
+          <text
+            key={`${p.week}-label`}
+            x={p.x}
+            y={height - 6}
+            textAnchor="middle"
+            fill="#9ca3af"
+            fontSize={11}
+          >
+            {p.week}
+          </text>
+        ))}
+      </svg>
+    </div>
   );
 }
