@@ -27,6 +27,7 @@ import {
   stagger
 } from "../../lib/landing-motion";
 import { useMobileReducedMotion } from "../../lib/use-mobile-reduced-motion";
+import { LandingShareChat } from "./LandingShareChat";
 import { ProgressChart } from "./ProgressChart";
 import { ScoreBar } from "./ScoreBar";
 
@@ -810,6 +811,8 @@ export default function EcrivanceLandingPage() {
           © 2026 Écrivance. All rights reserved.
         </p>
       </motion.footer>
+
+      <LandingShareChat />
     </div>
   );
 }
