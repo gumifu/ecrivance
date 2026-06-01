@@ -170,6 +170,7 @@ export default function DemoFlow() {
         else goTo("preparing");
       }}
       primaryLabel={step === "timing" ? "Start Writing Task 1" : "Continue"}
+      primaryLabelShort={step === "timing" ? "Start Task 1" : undefined}
       primaryVariant={step === "timing" ? "accent" : "primary"}
       primaryDisabled={
         step === "goal" ? !goal : step === "score" ? !score : step === "timing" ? !timing : false
